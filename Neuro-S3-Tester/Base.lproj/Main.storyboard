@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Neuro_S3_Tester" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,65 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k64-uE-y6J">
+                                <rect key="frame" x="321" y="564" width="99" height="30"/>
+                                <state key="normal" title="Upload to S3 !">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PAg-yi-zgc"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ffm-i9-BTF">
+                                <rect key="frame" x="434" y="578" width="150" height="2"/>
+                            </progressView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BengalTiger.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="hHE-xR-7G3">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="396"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="396" id="2uq-f0-SZp"/>
+                                    <constraint firstAttribute="width" secondItem="hHE-xR-7G3" secondAttribute="height" multiplier="50:33" id="v4t-7n-z9e"/>
+                                </constraints>
+                            </imageView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huv-qQ-k8o">
+                                <rect key="frame" x="0.0" y="406" width="600" height="162"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qh-li-T7y">
+                                <rect key="frame" x="488" y="559" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ffm-i9-BTF" secondAttribute="bottom" constant="20" id="1ML-ih-3ac"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="huv-qQ-k8o" secondAttribute="bottom" constant="32" id="AXV-6F-Cde"/>
+                            <constraint firstAttribute="centerX" secondItem="hHE-xR-7G3" secondAttribute="centerX" id="HTN-Yj-W73"/>
+                            <constraint firstItem="hHE-xR-7G3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="Hhh-yG-QqK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2qh-li-T7y" secondAttribute="trailing" constant="54" id="Sn3-Pb-c7s"/>
+                            <constraint firstItem="ffm-i9-BTF" firstAttribute="leading" secondItem="k64-uE-y6J" secondAttribute="trailing" constant="14" id="Xk1-8U-i47"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="k64-uE-y6J" secondAttribute="bottom" constant="6" id="dk2-Gf-Pwa"/>
+                            <constraint firstItem="ffm-i9-BTF" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="jWL-Ss-hcS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="k64-uE-y6J" secondAttribute="trailing" constant="164" id="nal-By-wac"/>
+                            <constraint firstItem="huv-qQ-k8o" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="rLR-OO-u0n"/>
+                            <constraint firstItem="ffm-i9-BTF" firstAttribute="top" secondItem="2qh-li-T7y" secondAttribute="bottom" constant="-2" id="rnj-Tr-dva"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="huv-qQ-k8o" secondAttribute="trailing" constant="-16" id="ss5-qB-WzE"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buttonUpload" destination="k64-uE-y6J" id="NbB-gZ-6Id"/>
+                        <outlet property="imageView" destination="hHE-xR-7G3" id="qtS-kR-jtH"/>
+                        <outlet property="pickerImage" destination="huv-qQ-k8o" id="E0W-7Q-dcG"/>
+                        <outlet property="progressLabel" destination="2qh-li-T7y" id="59E-mS-Ubn"/>
+                        <outlet property="progressView" destination="ffm-i9-BTF" id="YV0-mx-0ml"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="BengalTiger.jpg" width="1295" height="870"/>
+    </resources>
 </document>
